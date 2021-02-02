@@ -8,8 +8,6 @@ export class PriorityQueue {
 
   constructor(
     items: number[],
-    // default comparator, returns max heap
-    // If compareFunction(a, b) returns less than 0, sort a to an index lower than b (i.e. a comes first).
     private _comparator: (a: number, b: number) => number = (a, b) => b - a
   ) {
     this._items = [];
@@ -100,9 +98,9 @@ export class PriorityQueue {
     }
   }
 
-  /*
-    Retrieves and removes the head of this queue, or returns null if this queue is empty.
-  */
+  /**
+   *  Retrieves and removes the head of this queue, or returns null if this queue is empty.
+   */
   poll() {
     if (!this._items.length) throw new Error(`Invalid Queue Length`);
     const item = this._items[0];
@@ -111,29 +109,23 @@ export class PriorityQueue {
     return item;
   }
 
-  /*
-    Returns the comparator used to order the elements in this queue, 
-    or null if this queue is sorted according to the natural ordering of its elements.
-  */
+  /**
+   *  Returns the comparator used to order the elements in this queue,
+   *  or null if this queue is sorted according to the natural ordering of its elements.
+   */
   get comparator() {
     return this._comparator;
   }
 
-  /*
-    Return raw state of heap for testing
-  */
-  get items() {
-    return this._items;
-  }
-
-  /*
-    Returns the number of elements in this collection.
-  */
+  /**
+   *  Returns the number of elements in this collection.
+   */
   size() {}
 
-  /*
-    Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.
-  */
+  /**
+   *  Retrieves, but does not remove, the head of this queue,
+   *  or returns null if this queue is empty.
+   */
   peek() {
     return this._items.length ? this._items[0] : null;
   }
@@ -147,15 +139,19 @@ export class PriorityQueue {
   }
 
   /*
-  Removes a single instance of the specified element from this queue, if it is present. More formally, removes an element e such that o.equals(e), 
-  if this queue contains one or more such elements. Returns true if and only if this queue contained the specified element (or equivalently, if this queue changed as a result of the call).
+  Removes a single instance of the specified element from this queue, if it is present. 
+  More formally, removes an element e such that o.equals(e), if this queue contains one 
+  or more such elements. Returns true if and only if this queue contained the specified 
+  element (or equivalently, if this queue changed as a result of the call).
   */
   remove(elt: number) {}
 
   /*
-    This implementation iterates over the specified collection, and adds each element returned by the iterator to this queue, in turn. 
-    A runtime exception encountered while trying to add an element (including, in particular, a null element) may result in only some of the elements 
-    having been successfully added when the associated exception is thrown.
+    This implementation iterates over the specified collection, and adds each element 
+    returned by the iterator to this queue, in turn. A runtime exception encountered 
+    while trying to add an element (including, in particular, a null element) may result
+    in only some of the elements having been successfully added when the associated 
+    exception is thrown.
   */
   addAll(elts: number[]): boolean {
     let type = typeof elts[0];
